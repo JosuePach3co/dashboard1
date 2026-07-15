@@ -33,17 +33,11 @@ export interface Current {
 export interface HourlyUnits {
   time: string
   temperature_2m: string
-  relative_humidity_2m: string
   wind_speed_10m: string
-  weather_code: string
-  apparent_temperature: string
 }
 
 export interface Hourly {
   time: string[]
   temperature_2m: number[]
-  relative_humidity_2m: number[]
   wind_speed_10m: number[]
-  weather_code: number[]
-  apparent_temperature: number[]
 }
