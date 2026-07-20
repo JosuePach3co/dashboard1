@@ -5,12 +5,13 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import type { OpenMeteoResponse } from '../types/DashboardTypes';
 
 interface ChartUIProps {
+   cityName?: string | null;
    data?: OpenMeteoResponse;
    loading?: boolean;
    error?: string | null;
 }
 
-export default function ChartUI({ data, loading = false, error = null }: ChartUIProps) {
+export default function ChartUI({ cityName, data, loading = false, error = null }: ChartUIProps) {
    const labels = (data?.hourly?.time ?? []).slice(0, 24);
    const temperatureValues = (data?.hourly?.temperature_2m ?? []).slice(0, 24);
    const windValues = (data?.hourly?.wind_speed_10m ?? []).slice(0, 24);
@@ -41,11 +42,11 @@ export default function ChartUI({ data, loading = false, error = null }: ChartUI
 
    return (
       <>
-         <Typography variant="h5" component="div">
-            Temperatura y viento por hora
+         <Typography variant="h5" component="div" sx={{ mb: 2 }}>
+            Gráfico de Temperatura y Viento {cityName ? `- ${cityName}` : ''}
          </Typography>
          <LineChart
-            height={300}
+            height={320}
             series={[
                { data: temperatureValues, label: `Temperatura (${data?.hourly_units.temperature_2m ?? ''})` },
                { data: windValues, label: `Viento (${data?.hourly_units.wind_speed_10m ?? ''})` },

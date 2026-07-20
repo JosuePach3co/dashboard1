@@ -5,12 +5,13 @@ import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import type { OpenMeteoResponse } from '../types/DashboardTypes';
 
 interface TableUIProps {
+   cityName?: string | null;
    data?: OpenMeteoResponse;
    loading?: boolean;
    error?: string | null;
 }
 
-export default function TableUI({ data, loading = false, error = null }: TableUIProps) {
+export default function TableUI({ cityName, data, loading = false, error = null }: TableUIProps) {
    const rows = (data?.hourly?.time ?? []).slice(0, 12).map((time, index) => ({
       id: index,
       time,
