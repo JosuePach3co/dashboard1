@@ -58,18 +58,21 @@ export default function TableUI({ cityName, data, loading = false, error = null 
    }
 
    return (
-      <Box sx={{ height: 350, width: '100%' }}>
+      <Box sx={{ height: 420, width: '100%' }}>
+         <Typography variant="h6" component="div" sx={{ mb: 2 }}>
+            Datos horarios {cityName ? `- ${cityName}` : ''}
+         </Typography>
          <DataGrid
             rows={rows}
             columns={columns}
             initialState={{
                pagination: {
                   paginationModel: {
-                     pageSize: 5,
+                     pageSize: 6,
                   },
                },
             }}
-            pageSizeOptions={[5]}
+            pageSizeOptions={[6]}
             disableRowSelectionOnClick
          />
       </Box>
